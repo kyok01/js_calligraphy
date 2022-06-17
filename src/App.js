@@ -8,10 +8,12 @@ function App() {
   let iniHtml = '<!DOCTYPE html>\n<html lang="ja">\n';
   iniHtml +=
     '<head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Document</title></head>\n';
-  iniHtml += "<body>\n<h1>react</h1>\n<p></p>\n</body>\n</html>";
+  iniHtml += "<body>\n<h1>react</h1>\n<h2>now</h2>\n<p></p>\n</body>\n</html>";
+  const iniJs = 'document.querySelector("h2").innerHTML="change";';
+  const iniCss = 'h1 {color:red}'
   const [html, setHtml] = useState(iniHtml);
-  const [js, setJs] = useState("");
-  const [css, setCss] = useState("");
+  const [js, setJs] = useState(iniJs);
+  const [css, setCss] = useState(iniCss);
   const [source, setSource] = useState(
     "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/test.html"
   );
@@ -89,19 +91,19 @@ function App() {
         <Editor
           height="30vh"
           defaultLanguage="html"
-          defaultValue={html}
+          defaultValue={iniHtml}
           onChange={handleEditorChangeH}
         />
         <Editor
           height="30vh"
           defaultLanguage="javascript"
-          defaultValue='document.querySelector("h1").innerHTML="change"'
+          defaultValue={iniJs}
           onChange={handleEditorChangeJ}
         />
         <Editor
           height="30vh"
-          defaultLanguage="javascript"
-          defaultValue='document.querySelector("h1").innerHTML="change"'
+          defaultLanguage="css"
+          defaultValue={iniCss}
           onChange={handleEditorChangeC}
         />
         <button onClick={onClickPost}>send</button>
