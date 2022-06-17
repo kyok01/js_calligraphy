@@ -2,7 +2,6 @@ import React, { useEffect }from "react";
 import { useState } from "react";
 import { useParams } from 'react-router-dom';
 import { Cols } from "../components/cols";
-import classes from '../style.css';
 
 export const Art = () => {
     const {artId} = useParams();
