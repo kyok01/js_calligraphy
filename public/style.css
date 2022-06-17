@@ -1,14 +1,16 @@
-#code {
+#col__left {
     width: 40%;
     border: 1px black solid;
     margin: 12px;
 }
 
-#main {
-    display: flex;
-
+#col__right {
+    width: 40%;
+    border: 1px black solid;
+    margin: 12px;
 }
 
-#result {
-    width: 40%;
+#cols {
+    display: flex;
+    justify-content: center;
 }
