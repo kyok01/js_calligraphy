@@ -1,0 +1,14 @@
+#code {
+    width: 40%;
+    border: 1px black solid;
+    margin: 12px;
+}
+
+#main {
+    display: flex;
+
+}
+
+#result {
+    width: 40%;
+}
