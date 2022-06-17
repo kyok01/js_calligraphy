@@ -1,0 +1,20 @@
+#col__left {
+    width: 40%;
+    border: 1px black solid;
+    margin: 12px;
+}
+
+#col__right {
+    width: 40%;
+    border: 1px black solid;
+    margin: 12px;
+}
+
+#cols {
+    display: flex;
+    justify-content: center;
+}
+
+.menu__active {
+    color: red;
+}
