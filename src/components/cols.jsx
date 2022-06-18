@@ -6,7 +6,7 @@ import { ColRight } from "./colRight";
 import classes from '../style.css';
 
 export const Cols = (props) => {
-  const { iniHtml, iniJs, iniCss} = props;
+  const { artId, iniHtml, iniJs, iniCss} = props;
   const [html, setHtml] = useState('');
   const [js, setJs] = useState('');
   const [css, setCss] = useState('');
@@ -29,7 +29,7 @@ export const Cols = (props) => {
     setCss(iniCss);
   }, [iniHtml, iniJs, iniCss]);
   const [source, setSource] = useState(
-    "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/test.html"
+    `http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/folder${artId}/sample.html`
   );
   const width = "100%";
   const height = 500;
@@ -54,6 +54,7 @@ export const Cols = (props) => {
     // console.log(msg);
     // elem.innerHTML = msg;
     const postData = new FormData(); // フォーム方式で送る場合
+    postData.set("artId", artId); // set()で格納する
     postData.set("html", html); // set()で格納する
     postData.set("js", js); // set()で格納する
     postData.set("css", css); // set()で格納する
@@ -85,7 +86,7 @@ export const Cols = (props) => {
 
   const onClickReflect = () => {
     setSource(
-      "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/test.html"
+      `http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/folder${artId}/sample.html`
     );
     // if (js.indexOf('father') !== -1) {
     //   js.replace('document', 'document.getElementById("elem").elem.contentWindow.document')

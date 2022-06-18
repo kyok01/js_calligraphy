@@ -38,12 +38,18 @@ export const Art = () => {
   return (
     <>
       <h3>art {artId}</h3>
-      <ArtSummary artId={artId} name={iniVals["name"]} tags={(iniVals["tags"])} uses={iniVals["uses"]} />
+      <ArtSummary
+        artId={artId}
+        name={iniVals["name"]}
+        tags={iniVals["tags"]}
+        uses={iniVals["uses"]}
+      />
       {/* <p>{iniVals["ini_html"]}<br></br>
       {iniVals["ini_js"]}
       {iniVals["ini_css"]}
       {iniVals["note"]}</p> */}
       <Cols
+        artId={artId}
         iniHtml={iniVals["ini_html"]}
         iniJs={iniVals["ini_js"]}
         iniCss={iniVals["ini_css"]}
