@@ -18,3 +18,7 @@
 .menu__active {
     color: red;
 }
+
+label {
+    display: block;
+}

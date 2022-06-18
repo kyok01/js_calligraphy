@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Cols } from "../components/cols";
 import { ArtSummary } from "../components/artSummary";
 import { ArtDetail } from "../components/artDetail";
+import '../style.css';
 
 export const Art = () => {
   const { artId } = useParams();

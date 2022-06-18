@@ -5,6 +5,7 @@ import { About } from "./routes/about";
 import { Art } from "./routes/art";
 import { Arts } from "./routes/arts";
 import { NoMatch } from "./routes/noMatch";
+import { Post } from "./routes/post";
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Cols />} />
         <Route path="/about" element={<About />} />
+        <Route path="/post" element={<Post />} />
         <Route path="/arts" element={<Arts />} >
           <Route path=":artId" element={<Art />} />
         </Route>
