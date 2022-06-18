@@ -21,4 +21,25 @@
 
 label {
     display: block;
+    margin: 12px;
+}
+
+input {
+    width: 480px;
+    padding: 4px;
+}
+
+textarea {
+    width: 480px;
+    height: 160px;
+    padding: 4px;
+}
+
+.formArea {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.marker {
+    color: red;
 }
