@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useParams } from 'react-router-dom';
 import { Cols } from "../components/cols";
 
+
 export const Art = () => {
     const {artId} = useParams();
     const [iniVals, setIniVals] = useState([]);

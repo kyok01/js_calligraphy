@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { ColLeft } from "./colLeft";
 import { ColRight } from "./colRight";
+import classes from '../style.css';
 
 export const Cols = (props) => {
   const { iniHtml, iniJs, iniCss, note } = props;
