@@ -6,7 +6,7 @@ import { ColRight } from "./colRight";
 import classes from '../style.css';
 
 export const Cols = (props) => {
-  const { iniHtml, iniJs, iniCss, note } = props;
+  const { iniHtml, iniJs, iniCss} = props;
   const [html, setHtml] = useState('');
   const [js, setJs] = useState('');
   const [css, setCss] = useState('');
