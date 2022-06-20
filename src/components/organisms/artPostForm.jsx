@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 export const ArtPostForm = () => {
   const [artName, setArtName] = useState("");
@@ -114,52 +115,55 @@ export const ArtPostForm = () => {
   };
 
   const postForm = (
-    <div className="formArea">
+    <SFormArea>
       <form>
-        <label>
+        <SLabel>
           post name
           <br />
-          <input value={artName} onChange={(event) => onChangeArtName(event)} />
-        </label>
-        <label>
+          <SInput
+            value={artName}
+            onChange={(event) => onChangeArtName(event)}
+          />
+        </SLabel>
+        <SLabel>
           initial HTML
           <br />
-          <textarea
+          <STextarea
             value={iniHtml}
             onChange={(event) => onChangeIniHtml(event)}
           />
-        </label>
-        <label>
+        </SLabel>
+        <SLabel>
           initial Javascript
           <br />
-          <textarea value={iniJs} onChange={(event) => onChangeIniJs(event)} />
-        </label>
-        <label>
+          <STextarea value={iniJs} onChange={(event) => onChangeIniJs(event)} />
+        </SLabel>
+        <SLabel>
           initial Css
           <br />
-          <textarea
+          <STextarea
             value={iniCss}
             onChange={(event) => onChangeIniCss(event)}
           />
-        </label>
-        <label>
+        </SLabel>
+        <SLabel>
           Tags
           <br />
-          <input value={tags} onChange={(event) => onChangeTags(event)} />
-        </label>
-        <label>
+          <SInput value={tags} onChange={(event) => onChangeTags(event)} />
+        </SLabel>
+        <SLabel>
           Uses
           <br />
-          <input value={uses} onChange={(event) => onChangeUses(event)} />
-        </label>
-        <label>
+          <SInput value={uses} onChange={(event) => onChangeUses(event)} />
+        </SLabel>
+        <SLabel>
           Note(detail)
           <br />
-          <textarea value={note} onChange={(event) => onChangeNote(event)} />
-        </label>
+          <STextarea value={note} onChange={(event) => onChangeNote(event)} />
+        </SLabel>
       </form>
       <button onClick={onClickSubmit}>Submit</button>
-    </div>
+    </SFormArea>
   );
   return (
     <>
@@ -167,11 +171,39 @@ export const ArtPostForm = () => {
       {artId && (
         <p>
           Please visit{" "}
-          <span onClick={() => navigate(`/arts/${artId}`)} className="marker">
+          <SSpan onClick={() => navigate(`/arts/${artId}`)}>
             the page you have posted
-          </span>
+          </SSpan>
         </p>
       )}
     </>
   );
 };
+
+const SLabel = styled.label`
+  display: block;
+  margin: 12px;
+`;
+
+const SInput = styled.input`
+  width: 480px;
+  padding: 4px;
+`;
+
+const STextarea = styled.textarea`
+  width: 480px;
+  height: 160px;
+  padding: 4px;
+`;
+
+const SFormArea = styled.div`
+  width: 800px;
+  margin: 0 auto;
+`;
+
+const SSpan = styled.span`
+  color: red;
+  &:hover {
+    cursor: pointer;
+  }
+`;

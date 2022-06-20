@@ -3,12 +3,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { ColLeft } from "../organisms/colLeft";
 import { ColRight } from "../organisms/colRight";
+import styled from "styled-components";
 
 export const Cols = (props) => {
-  const { artId, iniHtml, iniJs, iniCss} = props;
-  const [html, setHtml] = useState('');
-  const [js, setJs] = useState('');
-  const [css, setCss] = useState('');
+  const { artId, iniHtml, iniJs, iniCss } = props;
+  const [html, setHtml] = useState("");
+  const [js, setJs] = useState("");
+  const [css, setCss] = useState("");
   // let iniHtml = '<!DOCTYPE html>\n<html lang="ja">\n';
   // iniHtml +=
   //   '<head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0">\n<link rel="stylesheet" href="style.css"><title>Document</title></head>\n';
@@ -99,7 +100,7 @@ export const Cols = (props) => {
     // elem.querySelector('h1').innerHTML = 'change';
   };
   return (
-    <div id="cols">
+    <SDivCols>
       <ColLeft
         iniHtml={iniHtml}
         handleEditorChangeH={handleEditorChangeH}
@@ -111,6 +112,11 @@ export const Cols = (props) => {
         onClickReflect={onClickReflect}
       />
       <ColRight source={source} width={width} height={height} />
-    </div>
+    </SDivCols>
   );
 };
+
+const SDivCols = styled.div`
+  display: flex;
+  justify-content: center;
+`;

@@ -1,5 +1,6 @@
 import React from "react";
 import Editor from "@monaco-editor/react";
+import styled from "styled-components";
 
 export const ColLeft = (props) => {
   const {
@@ -13,7 +14,7 @@ export const ColLeft = (props) => {
     onClickReflect,
   } = props;
   return (
-    <div id="col__left">
+    <SDivColLeft>
       <Editor
         height="30vh"
         defaultLanguage="html"
@@ -34,6 +35,12 @@ export const ColLeft = (props) => {
       />
       <button onClick={onClickPost}>send</button>
       <button onClick={onClickReflect}>reflect</button>
-    </div>
+    </SDivColLeft>
   );
 };
+
+const SDivColLeft = styled.div`
+  width: 40%;
+  border: 1px black solid;
+  margin: 12px;
+`;
