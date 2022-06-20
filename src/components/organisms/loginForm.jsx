@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { userState } from "../../store/userState";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
+  const [userInfo, setUserInfo] = useRecoilState(userState);
+  // const [id, setId] = useState(0);
   const [lid, setLid] = useState("");
   const [lpw, setLpw] = useState("");
+  const [msg, setMsg] = useState("");
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    userInfo.isLogin && navigate("/about");
+  }, [userInfo.isLogin]);
+
   const onClickPost = () => {
+    if (!lid || !lpw) {
+      setMsg("Wrong id or password");
+      return null;
+    }
     const postData = new FormData(); // フォーム方式で送る場合
     postData.set("lid", lid);
     postData.set("lpw", lpw);
@@ -23,30 +40,39 @@ export const LoginForm = () => {
 
     fetch(phpFile, data)
       .then((res) => res.text())
-      .then(console.log)
+      .then(
+        (data) =>
+          Number(data) && setUserInfo({ isLogin: true, lid: lid, id: data })
+      )
       .catch((error) => {
         console.log(error);
-      });
+      })
+      .then(setLid(""), setLpw(""))
+      .then(setMsg("Wrong id or password"));
   };
 
-  const onChangeLid = (event) =>{
+  const onChangeLid = (event) => {
     setLid(event.target.value);
-  }
-  const onChangeLpw = (event) =>{
+  };
+  const onChangeLpw = (event) => {
     setLpw(event.target.value);
-  }
+  };
 
   return (
     <div>
       <form>
-        <label>id
-        <input type="text" onChange={onChangeLid} value={lid}/>
-        </label><br />
-        <label>password
-        <input type="text" onChange={onChangeLpw} value={lpw}/>
+        <label>
+          id
+          <input type="text" onChange={onChangeLid} value={lid} />
+        </label>
+        <br />
+        <label>
+          password
+          <input type="text" onChange={onChangeLpw} value={lpw} />
         </label>
       </form>
       <button onClick={onClickPost}>Login</button>
+      <p>{msg}</p>
     </div>
   );
 };
