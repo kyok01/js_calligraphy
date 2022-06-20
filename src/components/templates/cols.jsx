@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { ColLeft } from "./colLeft";
-import { ColRight } from "./colRight";
+import { ColLeft } from "../organisms/colLeft";
+import { ColRight } from "../organisms/colRight";
 
 export const Cols = (props) => {
   const { artId, iniHtml, iniJs, iniCss} = props;

@@ -1,6 +1,6 @@
 import React from "react";
-import { ArtPostForm } from "../components/artPostForm";
-import '../style.css';
+import { ArtPostForm } from "../organisms/artPostForm";
+// import '.../style.css';
 
 export const Post = () => {
     return (

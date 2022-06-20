@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Cols } from "../components/cols";
-import { ArtSummary } from "../components/artSummary";
-import { ArtDetail } from "../components/artDetail";
-import '../style.css';
+import { Cols } from "../templates/cols";
+import { ArtSummary } from "../molecules/artSummary";
+import { ArtDetail } from "../molecules/artDetail";
+// import '../style.css';
 
 export const Art = () => {
   const { artId } = useParams();

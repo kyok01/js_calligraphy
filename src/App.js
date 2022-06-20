@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route, Link, NavLink } from "react-router-dom";
-import { Cols } from "./components/cols";
-import { About } from "./routes/about";
-import { Art } from "./routes/art";
-import { Arts } from "./routes/arts";
-import { NoMatch } from "./routes/noMatch";
-import { Post } from "./routes/post";
+import { Cols } from "./components/templates/cols";
+import { About } from "./components/pages/about";
+import { Art } from "./components/pages/art";
+import { Arts } from "./components/pages/arts";
+import { NoMatch } from "./components/pages/noMatch";
+import { Post } from "./components/pages/post";
 
 
 function App() {
