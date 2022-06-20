@@ -5,6 +5,7 @@ import { Art } from "../components/pages/art";
 import { Arts } from "../components/pages/arts";
 import { NoMatch } from "../components/pages/noMatch";
 import { Post } from "../components/pages/post";
+import { Login } from "../components/pages/login";
 
 export const PageRouter = () => {
     return (<>
@@ -37,6 +38,7 @@ export const PageRouter = () => {
         <Route path="/arts" element={<Arts />} >
           <Route path=":artId" element={<Art />} />
         </Route>
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </>
