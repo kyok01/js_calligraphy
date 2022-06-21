@@ -1,11 +1,12 @@
 import React, { memo, useEffect, useState } from "react";
 import Editor from "@monaco-editor/react";
 import styled from "styled-components";
-import { useRecoilValue } from "recoil";
-import { userState } from "../../store/userState";
+import { useLocation } from "react-router-dom";
+// import { useRecoilValue } from "recoil";
+// import { userState } from "../../store/userState";
 
 export const ColLeft = memo((props) => {
-  const userInfo = useRecoilValue(userState);
+  // const userInfo = useRecoilValue(userState);
   const {
     iniHtml,
     handleEditorChangeH,
@@ -14,8 +15,11 @@ export const ColLeft = memo((props) => {
     iniCss,
     handleEditorChangeC,
     onClickPost,
+    onClickUpdateDB,
     onClickReflect,
   } = props;
+  const location = useLocation();
+
   return (
     <SDivColLeft>
       <Editor
@@ -36,7 +40,7 @@ export const ColLeft = memo((props) => {
         value={iniCss}
         onChange={handleEditorChangeC}
       />
-      {userInfo.isLogin && <><button onClick={onClickPost}>send</button>
+      {location.pathname.match("/user/") && <><button onClick={onClickPost}>updateServerFile</button><button onClick={onClickUpdateDB}>updateDB</button>
       <button onClick={onClickReflect}>reflect</button></>}
     </SDivColLeft>
   );

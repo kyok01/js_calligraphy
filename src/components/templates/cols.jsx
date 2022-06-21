@@ -4,21 +4,30 @@ import { useState } from "react";
 import { ColLeft } from "../organisms/colLeft";
 import { ColRight } from "../organisms/colRight";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../store/userState";
 
 export const Cols = (props) => {
   const { artId, iniHtml, iniJs, iniCss } = props;
   const [html, setHtml] = useState("");
   const [js, setJs] = useState("");
   const [css, setCss] = useState("");
-  // useEffect(() => {
-  //   console.log("cols useEffect");
-  //   setHtml(iniHtml);
-  //   setJs(iniJs);
-  //   setCss(iniCss);
-  // }, [iniHtml, iniJs, iniCss]);
-  const [source, setSource] = useState(
-    `http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/folder${artId}/sample.html`
-  );
+  const location = useLocation();
+  const userInfo = useRecoilValue(userState);
+  useEffect(() => {
+    console.log("cols useEffect");
+    setHtml(iniHtml);
+    setJs(iniJs);
+    setCss(iniCss);
+  }, [iniHtml, iniJs, iniCss]);
+  let iframeSource;
+  if (location.pathname.match("/user/")) {
+    iframeSource = `http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/user/${userInfo.lid}/folder${artId}/sample.html`;
+  } else {
+    iframeSource = `http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/folder${artId}/sample.html`;
+  }
+  const [source, setSource] = useState(iframeSource);
   const width = "100%";
   const height = 500;
 
@@ -35,17 +44,28 @@ export const Cols = (props) => {
     setCss(value);
   }
   const onClickPost = () => {
+    updateServerFiles();
+    updateDB();
     // const elem=document.getElementById('elem');
     // console.log(elem.contentWindow.document.querySelector('h1'));
     // console.log(elem.contentWindow.document.querySelector('html'));
     // elem.contentWindow.document.querySelector('html').innerHTML = msg;
     // console.log(msg);
     // elem.innerHTML = msg;
+
+
+    // setSource('');
+    // setSource('http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/test.html');
+  };
+
+  // update files in server into new code
+  const updateServerFiles = () => {
     const postData = new FormData(); // フォーム方式で送る場合
     postData.set("artId", artId); // set()で格納する
     postData.set("html", html); // set()で格納する
     postData.set("js", js); // set()で格納する
     postData.set("css", css); // set()で格納する
+    postData.set("lid", userInfo.lid); // set()で格納する
 
     const data = {
       method: "POST",
@@ -54,7 +74,7 @@ export const Cols = (props) => {
 
     // post先のphpファイルを開発環境か本番環境かによって切り替える
     let phpFile =
-      "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/fileWrite.php";
+      "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/myPage_fileWrite.php";
     if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
       phpFile =
         "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/delete.php";
@@ -67,28 +87,43 @@ export const Cols = (props) => {
       .catch((error) => {
         console.log(error);
       });
+  }
 
-    // setSource('');
-    // setSource('http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/test.html');
-  };
+  const updateDB = () => {
+    console.log('updateDB');
+    const postData = new FormData(); // フォーム方式で送る場合
+    postData.set("artId", artId); // set()で格納する
+    postData.set("html", html); // set()で格納する
+    postData.set("js", js); // set()で格納する
+    postData.set("css", css); // set()で格納する
+    postData.set("lid", userInfo.lid); // set()で格納する
+
+    const data = {
+      method: "POST",
+      body: postData,
+    };
+
+    // post先のphpファイルを開発環境か本番環境かによって切り替える
+    let phpFile =
+      "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/myPage_updateMyDB.php";
+    if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
+      phpFile =
+        "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/delete.php";
+    }
+
+    fetch(phpFile, data)
+      .then((res) => res.text())
+      .then(console.log)
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   const onClickReflect = () => {
-    setSource(
-      `http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/folder${artId}/sample.html`
-    );
-    // if (js.indexOf('father') !== -1) {
-    //   js.replace('document', 'document.getElementById("elem").elem.contentWindow.document')
-    // }
-
-    // console.log(
-    //   js.replace('document', 'document.getElementById("elem").elem.contentWindow.document')
-    // );
-
-    // const elem=document.getElementById('elem').elem.contentWindow.document;
-    // elem.querySelector('h1').innerHTML = 'change';
+    setSource(iframeSource);
   };
 
-console.log(iniHtml);
+  console.log(iniHtml);
 
   return (
     <SDivCols>
@@ -100,6 +135,7 @@ console.log(iniHtml);
         iniCss={iniCss}
         handleEditorChangeC={handleEditorChangeC}
         onClickPost={onClickPost}
+        onClickUpdateDB={updateDB}
         onClickReflect={onClickReflect}
       />
       <ColRight source={source} width={width} height={height} />

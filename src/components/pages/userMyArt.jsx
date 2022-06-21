@@ -45,11 +45,40 @@ export const UserMyArt = () => {
 
     fetch(phpFile, data)
       .then((res) => res.json())
-      .then((json) => setIniVals(json))
+      .then((json) => json ? setIniVals(json) : postInsertMyArt())
       .catch((error) => {
         console.log(error);
       });
   };
+
+  const postInsertMyArt = () => {
+    console.log("postInsertMyArt");
+    // const postData = new FormData(); // フォーム方式で送る場合
+    // postData.set("id", artId); // set()で格納する
+    // postData.set("lid", userInfo.lid); // set()で格納する
+
+    // const data = {
+    //   method: "POST",
+    //   body: postData,
+    // };
+
+    // // post先のphpファイルを開発環境か本番環境かによって切り替える
+    // let phpFile =
+    //   "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/insertMyArt.php";
+    // if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
+    //   phpFile =
+    //     "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/delete.php";
+    // }
+
+    // fetch(phpFile, data)
+    //   .then((res) => console.log(res.json))
+    //   // .then((json) => json ? setIniVals(json) : console.log("bbb"))
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
+  
+  }
 
   useEffect(() => {
     postIniVal();

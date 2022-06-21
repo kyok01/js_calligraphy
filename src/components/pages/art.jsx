@@ -50,10 +50,10 @@ export const Art = () => {
         tags={iniVals["tags"]}
         uses={iniVals["uses"]}
       />
-      <p>{iniVals["ini_html"]}<br></br>
+      {/* <p>{iniVals["ini_html"]}<br></br>
       {iniVals["ini_js"]}
       {iniVals["ini_css"]}
-      {iniVals["note"]}</p>
+      {iniVals["note"]}</p> */}
       <Cols
         artId={artId}
         iniHtml={iniVals["ini_html"]}

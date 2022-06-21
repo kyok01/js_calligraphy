@@ -1,5 +1,5 @@
-import React, { useEffect , useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../store/userState";
 
@@ -8,12 +8,13 @@ export const ArtSummary = (props) => {
   const [tagsArr, setTagsArr] = useState([]);
   const [usesArr, setUsesArr] = useState([]);
 
-const userInfo = useRecoilValue(userState);
-const navigate = useNavigate();
+  const userInfo = useRecoilValue(userState);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     tags && setTagsArr(tags.split(","));
-    uses && setUsesArr(uses.split(','));
+    uses && setUsesArr(uses.split(","));
   }, [tags, uses]);
   return (
     <>
@@ -25,12 +26,19 @@ const navigate = useNavigate();
           return <span key={index}>{tag.trim()},,,</span>;
         })}
       </p>
-      <p>when you use:
-      {usesArr.map((use, index) => {
+      <p>
+        when you use:
+        {usesArr.map((use, index) => {
           return <span key={index}>{use.trim()},,,</span>;
         })}
       </p>
-      {userInfo.isLogin && <><Link to={`/user/${userInfo.lid}/${artId}`}>Make your own playground</Link></>}
+      {!location.pathname.match('/user/') && (
+        <>
+          <Link to={`/user/${userInfo.lid}/${artId}`}>
+            Make your own playground
+          </Link>
+        </>
+      )}
     </>
   );
 };
