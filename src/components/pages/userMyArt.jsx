@@ -45,7 +45,7 @@ export const UserMyArt = () => {
 
     fetch(phpFile, data)
       .then((res) => res.json())
-      .then((json) => json ? setIniVals(json) : postInsertMyArt())
+      .then((json) => json ? setIniVals(json) : postInsertMyArt()) // if there is no data in mypage_art table, postInsertMyArt functions
       .catch((error) => {
         console.log(error);
       });
@@ -53,32 +53,65 @@ export const UserMyArt = () => {
 
   const postInsertMyArt = () => {
     console.log("postInsertMyArt");
-    // const postData = new FormData(); // フォーム方式で送る場合
-    // postData.set("id", artId); // set()で格納する
-    // postData.set("lid", userInfo.lid); // set()で格納する
+    const postData = new FormData(); // フォーム方式で送る場合
+    postData.set("id", artId); // set()で格納する
+    postData.set("lid", userInfo.lid); // set()で格納する
 
-    // const data = {
-    //   method: "POST",
-    //   body: postData,
-    // };
+    const data = {
+      method: "POST",
+      body: postData,
+    };
 
-    // // post先のphpファイルを開発環境か本番環境かによって切り替える
-    // let phpFile =
-    //   "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/insertMyArt.php";
-    // if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
-    //   phpFile =
-    //     "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/delete.php";
-    // }
+    // post先のphpファイルを開発環境か本番環境かによって切り替える
+    let phpFile =
+      "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/insertMyArt.php";
+    if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
+      phpFile =
+        "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/delete.php";
+    }
 
-    // fetch(phpFile, data)
-    //   .then((res) => console.log(res.json))
-    //   // .then((json) => json ? setIniVals(json) : console.log("bbb"))
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-
-  
+    fetch(phpFile, data)
+      .then((res) => res.json()) //errorの中身を確認するにはres.text();
+      .then((hash) => hash && afterInsertFunc(hash))
+      .catch((error) => {
+        console.log(error);
+      });
   }
+
+  const afterInsertFunc = (hash) => {
+    setIniVals(hash);
+    updateServerFiles(hash);
+  }
+
+    // update files in server into new code
+    const updateServerFiles = (hash) => {
+      const postData = new FormData(); // フォーム方式で送る場合
+      postData.set("artId", artId); // set()で格納する
+      postData.set("html", hash['ini_html']); // set()で格納する
+      postData.set("js", hash['ini_js']); // set()で格納する
+      postData.set("css", hash['ini_css']); // set()で格納する
+      postData.set("lid", userInfo.lid); // set()で格納する
+  
+      const data = {
+        method: "POST",
+        body: postData,
+      };
+  
+      // post先のphpファイルを開発環境か本番環境かによって切り替える
+      let phpFile =
+        "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/myPage_fileWrite.php";
+      if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
+        phpFile =
+          "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/delete.php";
+      }
+  
+      fetch(phpFile, data)
+        .then((res) => res.text())
+        .then(console.log)
+        .catch((error) => {
+          console.log(error);
+        });
+    }
 
   useEffect(() => {
     postIniVal();
