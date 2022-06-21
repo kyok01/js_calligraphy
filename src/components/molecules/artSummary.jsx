@@ -1,5 +1,5 @@
 import React, { useEffect , useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../store/userState";
 
@@ -30,7 +30,7 @@ const navigate = useNavigate();
           return <span key={index}>{use.trim()},,,</span>;
         })}
       </p>
-      {userInfo.isLogin && <button onClick={()=>{navigate(`/user/${userInfo.lid}/${artId}`)}}>Make your own playground</button>}
+      {userInfo.isLogin && <Link to={`/user/${userInfo.lid}/${artId}`}>Make your own playground</Link>}
     </>
   );
 };

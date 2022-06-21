@@ -10,6 +10,7 @@ export const Art = () => {
   const { artId } = useParams();
   const [iniVals, setIniVals] = useState([]);
   const postIniVal = () => {
+    console.log("postinival");
     const postData = new FormData(); // フォーム方式で送る場合
     postData.set("id", artId); // set()で格納する
 

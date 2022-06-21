@@ -17,6 +17,7 @@ export const ColLeft = (props) => {
     onClickReflect,
   } = props;
   console.log(userInfo);
+  console.log(iniHtml);
   return (
     <SDivColLeft>
       <Editor
