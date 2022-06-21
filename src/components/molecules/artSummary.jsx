@@ -30,7 +30,7 @@ const navigate = useNavigate();
           return <span key={index}>{use.trim()},,,</span>;
         })}
       </p>
-      {userInfo.isLogin && <><Link to={`/user/${userInfo.lid}/${artId}`}>Make your own playground</Link><Link to={`/arts/${artId}`}>誰でも見れるページ</Link></>}
+      {userInfo.isLogin && <><Link to={`/user/${userInfo.lid}/${artId}`}>Make your own playground</Link></>}
     </>
   );
 };

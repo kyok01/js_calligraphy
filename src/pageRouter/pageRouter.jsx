@@ -25,6 +25,16 @@ export const PageRouter = () => {
         </li>
         <li>
           <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              isActive ? "menu__active" : undefined
+            }
+          >
+            Login
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="/about"
             className={({ isActive }) =>
               isActive ? "menu__active" : undefined

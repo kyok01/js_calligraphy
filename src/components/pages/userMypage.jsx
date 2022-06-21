@@ -21,7 +21,9 @@ export const UserMypage = () => {
     <>
     <div>userMypage</div>
     <p>Welcome! {userInfo.lid}</p>
-    <Link to="/user/test1/1">art 1</Link>
+    <Link to={`/arts/1`}>art 1</Link><br/>
+    <Link to={`/arts/2`}>art 2</Link><br/>
+    <Link to={`/arts/3`}>art 3</Link>
     </>
   );
 }
