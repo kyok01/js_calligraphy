@@ -13,7 +13,7 @@ export const LoginForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    userInfo.isLogin && navigate("/about");
+    userInfo.isLogin && navigate(`/user/${userInfo.lid}`);
   }, [userInfo.isLogin]);
 
   const onClickPost = () => {
