@@ -27,7 +27,7 @@ export const Cols = (props) => {
   } else {
     iframeSource = `http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/folder${artId}/sample.html`;
   }
-  const [source, setSource] = useState(iframeSource);
+  const [source, setSource] = useState(location.pathname.match("/user/") ? "" : iframeSource);
   const width = "100%";
   const height = 500;
 
@@ -46,16 +46,6 @@ export const Cols = (props) => {
   const onClickPost = () => {
     updateServerFiles();
     updateDB();
-    // const elem=document.getElementById('elem');
-    // console.log(elem.contentWindow.document.querySelector('h1'));
-    // console.log(elem.contentWindow.document.querySelector('html'));
-    // elem.contentWindow.document.querySelector('html').innerHTML = msg;
-    // console.log(msg);
-    // elem.innerHTML = msg;
-
-
-    // setSource('');
-    // setSource('http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/test.html');
   };
 
   // update files in server into new code

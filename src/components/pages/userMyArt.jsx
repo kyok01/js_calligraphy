@@ -72,7 +72,9 @@ export const UserMyArt = () => {
 
     fetch(phpFile, data)
       .then((res) => res.json()) //errorの中身を確認するにはres.text();
-      .then((hash) => hash && afterInsertFunc(hash))
+      .then((hash) => hash && setIniVals(hash))
+      // .then(console.log)
+      // .then((hash) => hash && afterInsertFunc(hash))
       .catch((error) => {
         console.log(error);
       });
@@ -106,7 +108,7 @@ export const UserMyArt = () => {
       }
   
       fetch(phpFile, data)
-        .then((res) => res.text())
+        .then((res) => res.json())
         .then(console.log)
         .catch((error) => {
           console.log(error);
