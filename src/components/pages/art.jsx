@@ -9,6 +9,7 @@ import { ArtDetail } from "../molecules/artDetail";
 export const Art = () => {
   const { artId } = useParams();
   const [iniVals, setIniVals] = useState([]);
+
   const postIniVal = () => {
     console.log("postinival");
     const postData = new FormData(); // フォーム方式で送る場合
@@ -29,14 +30,17 @@ export const Art = () => {
 
     fetch(phpFile, data)
       .then((res) => res.json())
-      .then((data) => setIniVals(data[0]))
+      .then((data) => setIniVals(data[0]),console.log('setInival'))
       .catch((error) => {
         console.log(error);
       });
   };
+
   useEffect(() => {
     postIniVal();
   }, []);
+
+  console.log('aaa');
   return (
     <>
       <h3>art {artId}</h3>
@@ -46,10 +50,10 @@ export const Art = () => {
         tags={iniVals["tags"]}
         uses={iniVals["uses"]}
       />
-      {/* <p>{iniVals["ini_html"]}<br></br>
+      <p>{iniVals["ini_html"]}<br></br>
       {iniVals["ini_js"]}
       {iniVals["ini_css"]}
-      {iniVals["note"]}</p> */}
+      {iniVals["note"]}</p>
       <Cols
         artId={artId}
         iniHtml={iniVals["ini_html"]}

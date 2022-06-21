@@ -10,24 +10,12 @@ export const Cols = (props) => {
   const [html, setHtml] = useState("");
   const [js, setJs] = useState("");
   const [css, setCss] = useState("");
-  // let iniHtml = '<!DOCTYPE html>\n<html lang="ja">\n';
-  // iniHtml +=
-  //   '<head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0">\n<link rel="stylesheet" href="style.css"><title>Document</title></head>\n';
-  // iniHtml +=
-  //   "<body>\n<h1>react</h1>\n<h2>now</h2>\n<p></p>\n<script src='main.js'></script>\n</body>\n</html>";
-  // const iniJs = 'document.querySelector("h2").innerHTML="change";';
-  // const iniCss = "h1 {color:red}";
-  // console.log(iniHtml);
-  // console.log(iniJs);
-  // console.log(iniCss);
-  useEffect(() => {
-    // console.log(iniHtml);
-    // console.log(iniJs);
-    // console.log(iniCss);
-    setHtml(iniHtml);
-    setJs(iniJs);
-    setCss(iniCss);
-  }, [iniHtml, iniJs, iniCss]);
+  // useEffect(() => {
+  //   console.log("cols useEffect");
+  //   setHtml(iniHtml);
+  //   setJs(iniJs);
+  //   setCss(iniCss);
+  // }, [iniHtml, iniJs, iniCss]);
   const [source, setSource] = useState(
     `http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/folder${artId}/sample.html`
   );
@@ -99,6 +87,9 @@ export const Cols = (props) => {
     // const elem=document.getElementById('elem').elem.contentWindow.document;
     // elem.querySelector('h1').innerHTML = 'change';
   };
+
+console.log(iniHtml);
+
   return (
     <SDivCols>
       <ColLeft
