@@ -1,8 +1,11 @@
 import React from "react";
 import Editor from "@monaco-editor/react";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../store/userState";
 
 export const ColLeft = (props) => {
+  const userInfo = useRecoilValue(userState);
   const {
     iniHtml,
     handleEditorChangeH,
@@ -13,6 +16,7 @@ export const ColLeft = (props) => {
     onClickPost,
     onClickReflect,
   } = props;
+  console.log(userInfo);
   return (
     <SDivColLeft>
       <Editor
@@ -33,8 +37,9 @@ export const ColLeft = (props) => {
         defaultValue={iniCss}
         onChange={handleEditorChangeC}
       />
-      <button onClick={onClickPost}>send</button>
-      <button onClick={onClickReflect}>reflect</button>
+      {userInfo.isLogin && <><button onClick={onClickPost}>send</button>
+      <button onClick={onClickReflect}>reflect</button></>}
+      
     </SDivColLeft>
   );
 };

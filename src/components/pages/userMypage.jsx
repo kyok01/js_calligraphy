@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useRecoilValue } from 'recoil';
 import { userState } from '../../store/userState';
 
@@ -13,10 +13,15 @@ export const UserMypage = () => {
             navigate("/login")
         }
       }, [userInfo]);
+
+    //   const onClickFunc = () => {
+        
+    //   }
   return (
     <>
     <div>userMypage</div>
     <p>Welcome! {userInfo.lid}</p>
+    <Link to="/arts/1">art 1</Link>
     </>
-  )
+  );
 }

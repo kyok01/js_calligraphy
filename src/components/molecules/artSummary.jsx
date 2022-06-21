@@ -1,9 +1,16 @@
 import React, { useEffect , useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../store/userState";
 
 export const ArtSummary = (props) => {
   const { artId, name, tags, uses } = props;
   const [tagsArr, setTagsArr] = useState([]);
   const [usesArr, setUsesArr] = useState([]);
+
+const userInfo = useRecoilValue(userState);
+const navigate = useNavigate();
+
   useEffect(() => {
     tags && setTagsArr(tags.split(","));
     uses && setUsesArr(uses.split(','));
@@ -23,6 +30,7 @@ export const ArtSummary = (props) => {
           return <span key={index}>{use.trim()},,,</span>;
         })}
       </p>
+      {userInfo.isLogin && <button onClick={()=>{navigate(`/user/${userInfo.lid}/${artId}`)}}>Make your own playground</button>}
     </>
   );
 };
