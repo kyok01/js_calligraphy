@@ -67,7 +67,7 @@ export const Cols = (props) => {
       "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/myPage_fileWrite.php";
     if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
       phpFile =
-        "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/delete.php";
+        "https://brownlynx2.sakura.ne.jp/phpApi_jsCal_test/myPage_fileWrite.php";
     }
 
     fetch(phpFile, data)
@@ -98,7 +98,7 @@ export const Cols = (props) => {
       "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/myPage_updateMyDB.php";
     if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
       phpFile =
-        "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/delete.php";
+        "https://brownlynx2.sakura.ne.jp/phpApi_jsCal_test/myPage_updateMyDB.php";
     }
 
     fetch(phpFile, data)

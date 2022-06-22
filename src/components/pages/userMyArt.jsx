@@ -40,7 +40,7 @@ export const UserMyArt = () => {
       "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/myPage_iniValRes.php";
     if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
       phpFile =
-        "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/delete.php";
+        "https://brownlynx2.sakura.ne.jp/phpApi_jsCal_test/myPage_iniValRes.php";
     }
 
     fetch(phpFile, data)
@@ -67,7 +67,7 @@ export const UserMyArt = () => {
       "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/insertMyArt.php";
     if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
       phpFile =
-        "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/delete.php";
+        "https://brownlynx2.sakura.ne.jp/phpApi_jsCal_test/insertMyArt.php";
     }
 
     fetch(phpFile, data)
@@ -104,7 +104,7 @@ export const UserMyArt = () => {
         "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/myPage_fileWrite.php";
       if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
         phpFile =
-          "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/delete.php";
+          "https://brownlynx2.sakura.ne.jp/myPage_iniValRes/myPage_fileWrite.php";
       }
   
       fetch(phpFile, data)

@@ -21,7 +21,7 @@ export const SearchArea = (props) => {
       "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/selectAllMyArt.php";
     if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
       phpFile =
-        "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/insert.php";
+        "https://brownlynx2.sakura.ne.jp/phpApi_jsCal_test/selectAllMyArt.php";
     }
 
     fetch(phpFile, data)
@@ -46,7 +46,7 @@ export const SearchArea = (props) => {
       "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/selectSpecificMyArt.php";
     if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
       phpFile =
-        "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/insert.php";
+        "https://brownlynx2.sakura.ne.jp/phpApi_jsCal_test/selectSpecificMyArt.php";
     }
 
     fetch(phpFile, data)

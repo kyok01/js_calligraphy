@@ -1,6 +1,7 @@
 {
   "name": "js_calligraphy",
   "version": "0.1.0",
+  "homepage": "https://brownlynx2.sakura.ne.jp/js_calligraphy_test",
   "private": true,
   "dependencies": {
     "@monaco-editor/react": "^4.4.5",

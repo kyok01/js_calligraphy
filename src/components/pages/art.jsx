@@ -25,7 +25,7 @@ export const Art = () => {
       "http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/iniValRes.php";
     if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
       phpFile =
-        "https://brownlynx2.sakura.ne.jp/phpApi-for-react-demo/delete.php";
+        "https://brownlynx2.sakura.ne.jp/phpApi_jsCal_test/iniValRes.php";
     }
 
     fetch(phpFile, data)
