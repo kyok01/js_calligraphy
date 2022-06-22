@@ -25,6 +25,7 @@ const SContainer = styled.div`
   text-align: center;
   border-radius: 9999px;
   line-height: 60px;
+  background-color: red;
 `;
 
 const SSpan = styled.span`

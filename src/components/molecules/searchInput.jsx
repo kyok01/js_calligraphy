@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Input } from "../atoms/input";
+import { PrimaryButton } from "../atoms/primaryButton";
 
 export const SearchInput = (props) => {
   const { value, onChange } = props;
@@ -8,7 +9,10 @@ export const SearchInput = (props) => {
     <div>
       <SContainer>
         <Input placeholder="input query" onChange={onChange} value={value}/>
-        <SButtonWrapper>Serch</SButtonWrapper>
+        <SButtonWrapper>
+          <PrimaryButton>Serch</PrimaryButton>
+          
+          </SButtonWrapper>
       </SContainer>
     </div>
   );
