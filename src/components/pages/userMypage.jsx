@@ -76,6 +76,7 @@ const SProfCard = styled.div`
   border-radius: 16px;
   width: 32%;
   margin: 12px auto;
+  padding: 4px;
 `;
 
 const SH2 = styled.h2`

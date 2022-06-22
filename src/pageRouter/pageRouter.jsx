@@ -10,6 +10,7 @@ import { User } from "../components/pages/user";
 import { UserMypage } from "../components/pages/userMypage";
 import { UserMyArt } from "../components/pages/userMyArt";
 import { HeaderOnly } from "../components/templates/headerOnly";
+import { Home } from "../components/pages/home";
 
 export const PageRouter = () => {
     return (<>
@@ -46,7 +47,7 @@ export const PageRouter = () => {
         </li>
       </ul> */}
     <Routes basename="/subfolder">
-        <Route path="/" element={<Cols />} />
+        <Route path="/" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/post" element={<HeaderOnly><Post /></HeaderOnly>} />
         <Route path="/arts" element={<Arts />} >
