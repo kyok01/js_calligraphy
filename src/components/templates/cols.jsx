@@ -24,8 +24,14 @@ export const Cols = (props) => {
   let iframeSource;
   if (location.pathname.match("/user/")) {
     iframeSource = `http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/user/${userInfo.lid}/folder${artId}/sample.html`;
+    if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
+      iframeSource = `https://brownlynx2.sakura.ne.jp/phpApi_jsCal_test/user/${userInfo.lid}/folder${artId}/sample.html`;
+    }
   } else {
     iframeSource = `http://localhost/Github-Repo-PHP/phpApi_js_calligraphy/data/folder${artId}/sample.html`;
+    if (window.location.origin === "https://brownlynx2.sakura.ne.jp") {
+      iframeSource = `https://brownlynx2.sakura.ne.jp/phpApi_jsCal_test/data/folder${artId}/sample.html`;
+    }
   }
   const [source, setSource] = useState(location.pathname.match("/user/") ? "" : iframeSource);
   const width = "100%";
