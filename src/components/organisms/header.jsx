@@ -16,6 +16,7 @@ export const Header = () => {
 
   const onClickLogout = () => {
     setUserInfo({ isLogin: false, lid: "", id: "" })
+    navigate("/login");
   }
 
   const onClickProfImg = () => navigate(`/user/${userInfo.lid}`);
@@ -48,7 +49,7 @@ export const Header = () => {
 
 const SHeader = styled.header`
   background-color: #5da797;
-  color: #fff;
+  color: #E9E9E9;
   text-align: center;
   padding: 0px 8px;
   display: flex;

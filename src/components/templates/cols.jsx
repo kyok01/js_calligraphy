@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../store/userState";
-import { Header } from "../organisms/header";
 
 export const Cols = (props) => {
   const { artId, iniHtml, iniJs, iniCss } = props;
@@ -38,7 +37,7 @@ export const Cols = (props) => {
     location.pathname.match("/user/") ? "" : iframeSource
   );
   const width = "100%";
-  const height = 500;
+  const height = "100%";
 
   function handleEditorChangeH(value, event) {
     console.log("here is the current model value:", value);
@@ -126,7 +125,6 @@ export const Cols = (props) => {
 
   return (
     <>
-      <Header />
       <SDivCols>
         <ColLeft
           iniHtml={iniHtml}

@@ -5,7 +5,7 @@ export const ColRight = (props) => {
   const { source, width, height } = props;
   return (
     <SDivColRight>
-      <iframe
+      <SIframe
         title="iframe"
         src={source}
         // height={height}
@@ -19,6 +19,12 @@ export const ColRight = (props) => {
 
 const SDivColRight = styled.div`
   width: 40%;
-  border: 1px black solid;
+  /* border: 1px black solid; */
   margin: 12px;
+  height: 96vh;
+`;
+
+const SIframe = styled.iframe`
+border: 1px solid #454545;
+margin-top: 8px;
 `;

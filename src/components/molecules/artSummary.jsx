@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
+import styled from "styled-components";
 import { userState } from "../../store/userState";
 
 export const ArtSummary = (props) => {
@@ -18,14 +19,14 @@ export const ArtSummary = (props) => {
   }, [tags, uses]);
   return (
     <>
-      <p>art {artId} summary</p>
-      <p>name:{name}</p>
-      <p>
-        tags:
+      {/* <p>art {artId} summary</p> */}
+      <h1>{name}</h1>
+      <SP>
+        <span>tags:</span>
         {tagsArr.map((tag, index) => {
           return <span key={index}>{tag.trim()},,,</span>;
         })}
-      </p>
+      </SP>
       <p>
         when you use:
         {usesArr.map((use, index) => {
@@ -42,3 +43,7 @@ export const ArtSummary = (props) => {
     </>
   );
 };
+
+const SP = styled.p`
+color: #E9E9E9;
+`;

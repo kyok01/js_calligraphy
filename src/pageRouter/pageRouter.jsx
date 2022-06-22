@@ -50,9 +50,9 @@ export const PageRouter = () => {
         <Route path="/about" element={<About />} />
         <Route path="/post" element={<HeaderOnly><Post /></HeaderOnly>} />
         <Route path="/arts" element={<Arts />} >
-          <Route path=":artId" element={<Art />} />
+          <Route path=":artId" element={<HeaderOnly><Art /></HeaderOnly>} />
         </Route>
-        <Route path="/user" element={<User />} >
+        <Route path="/user" element={<HeaderOnly><User /></HeaderOnly>} >
           <Route path=":lid" element={<UserMypage />} />
           <Route path=":lid/:artId" element={<UserMyArt />} />
         </Route>
