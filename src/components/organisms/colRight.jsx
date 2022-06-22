@@ -21,7 +21,7 @@ const SDivColRight = styled.div`
   width: 40%;
   /* border: 1px black solid; */
   margin: 12px;
-  height: 96vh;
+  height: 64vh;
 `;
 
 const SIframe = styled.iframe`

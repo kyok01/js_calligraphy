@@ -5,6 +5,7 @@ import { userState } from "../../store/userState";
 import { ArtDetail } from "../molecules/artDetail";
 import { ArtSummary } from "../molecules/artSummary";
 import { Cols } from "../templates/cols";
+import styled from "styled-components";
 // import { ColsMyPage } from '../templates/colsMyPage';
 
 export const UserMyArt = () => {
@@ -124,7 +125,6 @@ export const UserMyArt = () => {
   console.log(iniVals);
   return (
     <>
-      <h3>art {artId}</h3>
       <ArtSummary
         artId={artId}
         name={iniVals["name"]}

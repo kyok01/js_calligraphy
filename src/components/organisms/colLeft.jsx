@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import { PrimaryTextBox } from "../atoms/primaryTextBox";
 // import { useRecoilValue } from "recoil";
 // import { userState } from "../../store/userState";
+import { PrimaryButton } from "../atoms/primaryButton";
+import { SecondaryButton } from "../atoms/secondaryButton";
 
 export const ColLeft = memo((props) => {
   // const userInfo = useRecoilValue(userState);
@@ -26,7 +28,7 @@ export const ColLeft = memo((props) => {
       <PrimaryTextBox>HTML</PrimaryTextBox>
       <SEditorContainer>
         <Editor
-          height="30vh"
+          height="16vh"
           defaultLanguage="html"
           value={iniHtml}
           onChange={handleEditorChangeH}
@@ -35,7 +37,7 @@ export const ColLeft = memo((props) => {
       <PrimaryTextBox>Javascript</PrimaryTextBox>
       <SEditorContainer>
         <Editor
-          height="30vh"
+          height="16vh"
           defaultLanguage="javascript"
           value={iniJs}
           onChange={handleEditorChangeJ}
@@ -44,7 +46,7 @@ export const ColLeft = memo((props) => {
       <PrimaryTextBox>CSS</PrimaryTextBox>
       <SEditorContainer>
         <Editor
-          height="20vh"
+          height="16vh"
           defaultLanguage="css"
           value={iniCss}
           onChange={handleEditorChangeC}
@@ -52,11 +54,11 @@ export const ColLeft = memo((props) => {
       </SEditorContainer>
 
       {location.pathname.match("/user/") && (
-        <>
-          <button onClick={onClickPost}>updateServerFile</button>
-          <button onClick={onClickUpdateDB}>updateDB</button>
-          <button onClick={onClickReflect}>reflect</button>
-        </>
+        <SButtonContainer>
+          <PrimaryButton onClick={onClickPost}>Update</PrimaryButton>
+          {/* <button onClick={onClickUpdateDB}>updateDB</button> */}
+          <SecondaryButton onClick={onClickReflect}>Reflect</SecondaryButton>
+        </SButtonContainer>
       )}
     </SDivColLeft>
   );
@@ -70,4 +72,11 @@ const SDivColLeft = styled.div`
 
 const SEditorContainer = styled.div`
   border: 1px #454545 solid;
+`;
+
+const SButtonContainer = styled.div`
+display: flex;
+height: 50px;
+justify-content: center;
+align-items: center;
 `;

@@ -7,4 +7,5 @@ export const BaseTextBox = styled.button`
   border: none;
   outline: none;
   font-size: 1rem;
+  margin: 4px 4px 0px 0px;
 `;

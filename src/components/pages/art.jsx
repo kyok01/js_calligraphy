@@ -43,7 +43,7 @@ export const Art = () => {
   console.log('aaa');
   return (
     <>
-      <h3>art {artId}</h3>
+      {/* <h3>art {artId}</h3> */}
       <ArtSummary
         artId={artId}
         name={iniVals["name"]}
