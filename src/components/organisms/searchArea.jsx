@@ -4,12 +4,21 @@ import { useNavigate, useParams } from "react-router-dom";
 import { SearchInput } from "../molecules/searchInput";
 import styled from "styled-components";
 import { ArtRow } from "../molecules/artRow";
+// import { useRecoilState } from "recoil";
+// import { userState } from "../../store/userState";
 
 export const SearchArea = (props) => {
   const [val, setVal] = useState("");
   const [myArts, setMyArts] = useState([]);
+  // const [userInfo, setUserInfo] = useRecoilState(userState);
   const { lid } = useParams();
   const navigate = useNavigate();
+
+// const afterPostSelectAll = (arr) => {
+//   setMyArts(arr);
+//   // setUserInfo({postNum: arr.length})
+// }
+
   const postSelectAll = () => {
     const postData = new FormData(); // フォーム方式で送る場合
     postData.set("lid", lid);
@@ -59,6 +68,11 @@ export const SearchArea = (props) => {
       });
   };
 
+  // useEffect(()=>{
+  //   myArts && setUserInfo({postNum: myArts.length})
+  // },[myArts])
+
+
   const onClickNavMyArt = (art_id) => {
     navigate(`/user/${lid}/${art_id}`);
   }
@@ -78,8 +92,11 @@ export const SearchArea = (props) => {
   };
   return (
     <div>
-      <h2>Your Arts List</h2>
+<STitle>
+<SH2>Your Arts List</SH2>
       <SearchInput onChange={onChangeInput} value={val} />
+</STitle>
+      
       <STable>
         <thead><STr>
           <th>Art Name</th>
@@ -126,3 +143,13 @@ const STr = styled.tr`
   border-bottom: 1px solid #e9e9e9;
 `;
 // const SArtCard = styled(ArtCard)`margin: 8px auto;background-color: red;color: red;`;
+
+const SH2 = styled.h2`
+color: #5DA797;
+`;
+
+const STitle = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+`;

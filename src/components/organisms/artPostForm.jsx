@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { Input } from "../atoms/input";
+import { PrimaryButton } from "../atoms/primaryButton";
+// import Editor from "@monaco-editor/react";
 
 export const ArtPostForm = () => {
   const [artName, setArtName] = useState("");
@@ -116,53 +119,73 @@ export const ArtPostForm = () => {
 
   const postForm = (
     <SFormArea>
-      <form>
-        <SLabel>
-          post name
-          <br />
-          <SInput
-            value={artName}
-            onChange={(event) => onChangeArtName(event)}
-          />
-        </SLabel>
-        <SLabel>
-          initial HTML
-          <br />
-          <STextarea
-            value={iniHtml}
-            onChange={(event) => onChangeIniHtml(event)}
-          />
-        </SLabel>
-        <SLabel>
-          initial Javascript
-          <br />
-          <STextarea value={iniJs} onChange={(event) => onChangeIniJs(event)} />
-        </SLabel>
-        <SLabel>
-          initial Css
-          <br />
-          <STextarea
-            value={iniCss}
-            onChange={(event) => onChangeIniCss(event)}
-          />
-        </SLabel>
-        <SLabel>
-          Tags
-          <br />
-          <SInput value={tags} onChange={(event) => onChangeTags(event)} />
-        </SLabel>
-        <SLabel>
-          Uses
-          <br />
-          <SInput value={uses} onChange={(event) => onChangeUses(event)} />
-        </SLabel>
-        <SLabel>
-          Note(detail)
-          <br />
-          <STextarea value={note} onChange={(event) => onChangeNote(event)} />
-        </SLabel>
-      </form>
-      <button onClick={onClickSubmit}>Submit</button>
+      <SForm>
+        <div>
+          <SLabel>
+            <Input
+              value={artName}
+              onChange={(event) => onChangeArtName(event)}
+              placeholder="Art Name"
+            />
+          </SLabel>
+          <SLabel>
+            <Input
+              value={tags}
+              onChange={(event) => onChangeTags(event)}
+              placeholder="Tags"
+            />
+          </SLabel>
+          <SLabel>
+            <Input
+              value={uses}
+              onChange={(event) => onChangeUses(event)}
+              placeholder="Uses"
+            />
+          </SLabel>
+          <SLabel>
+            {/* Note(detail) */}
+            {/* <br /> */}
+            <SNTextarea
+              value={note}
+              onChange={(event) => onChangeNote(event)}
+              placeholder="Note"
+            />
+          </SLabel>
+        </div>
+        <div>
+          <SLabel>
+            {/* initial HTML
+          <br /> */}
+            <STextarea
+              value={iniHtml}
+              onChange={(event) => onChangeIniHtml(event)}
+              placeholder="Initial HTML"
+            />
+          </SLabel>
+          <SLabel>
+            {/* initial Javascript
+          <br /> */}
+            <STextarea
+              value={iniJs}
+              onChange={(event) => onChangeIniJs(event)}
+              placeholder="Initial Javascript"
+            />
+          </SLabel>
+          <SLabel>
+            {/* initial Css
+          <br /> */}
+            <STextarea
+              value={iniCss}
+              onChange={(event) => onChangeIniCss(event)}
+              placeholder="Initial CSS"
+            />
+          </SLabel>
+        </div>
+      </SForm>
+      <SBContainer>
+        <PrimaryButton onClick={onClickSubmit}>Submit</PrimaryButton>
+      </SBContainer>
+      {/* <button onClick={onClickSubmit}>Submit</button> */}
     </SFormArea>
   );
   return (
@@ -182,7 +205,7 @@ export const ArtPostForm = () => {
 
 const SLabel = styled.label`
   display: block;
-  margin: 12px;
+  margin: 16px;
 `;
 
 const SInput = styled.input`
@@ -191,14 +214,37 @@ const SInput = styled.input`
 `;
 
 const STextarea = styled.textarea`
-  width: 480px;
-  height: 160px;
-  padding: 4px;
+  width: 400px;
+  height: 148px;
+  padding: 16px;
+  font-size: 1rem;
+  border-radius: 16px;
+  border: solid #ddd 1px;
+  resize: none;
+  ::placeholder {
+    font-size: 1rem;
+  }
+`;
+
+const SNTextarea = styled.textarea`
+  width: 400px;
+  height: 400px;
+  padding: 16px;
+  font-size: 1rem;
+  border-radius: 16px;
+  border: solid #ddd 1px;
+  resize: none;
+  ::placeholder {
+    font-size: 1rem;
+  }
 `;
 
 const SFormArea = styled.div`
-  width: 800px;
+  width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const SSpan = styled.span`
@@ -206,4 +252,14 @@ const SSpan = styled.span`
   &:hover {
     cursor: pointer;
   }
+`;
+
+const SForm = styled.div`
+  display: flex;
+`;
+
+const SBContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
