@@ -50,7 +50,7 @@ margin: 12px auto;
 width: 48%;
 background-color: #E9E9E9;
 padding: 8px;
-/* border-radius: 9999px; */
+border-radius: 32px;
 `;
 
 const SH1 = styled.h1`

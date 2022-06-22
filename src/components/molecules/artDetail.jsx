@@ -12,7 +12,7 @@ width: 48%;
 background-color: #E9E9E9;
 padding: 8px;
 min-height: 160px;
-/* border-radius: 9999px; */
+border-radius: 32px;
 `;
 
 const SH2 = styled.h2`

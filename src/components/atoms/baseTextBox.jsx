@@ -8,4 +8,5 @@ export const BaseTextBox = styled.button`
   outline: none;
   font-size: 1rem;
   margin: 4px 4px 0px 0px;
+  border-radius: 4px;
 `;

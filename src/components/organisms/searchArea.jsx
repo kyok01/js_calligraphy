@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { ArtCard } from "../molecules/artCard";
+import { useNavigate, useParams } from "react-router-dom";
+// import { ArtCard } from "../molecules/artCard";
 import { SearchInput } from "../molecules/searchInput";
 import styled from "styled-components";
+import { ArtRow } from "../molecules/artRow";
 
 export const SearchArea = (props) => {
   const [val, setVal] = useState("");
   const [myArts, setMyArts] = useState([]);
   const { lid } = useParams();
+  const navigate = useNavigate();
   const postSelectAll = () => {
     const postData = new FormData(); // フォーム方式で送る場合
     postData.set("lid", lid);
@@ -57,6 +59,10 @@ export const SearchArea = (props) => {
       });
   };
 
+  const onClickNavMyArt = (art_id) => {
+    navigate(`/user/${lid}/${art_id}`);
+  }
+
   useEffect(() => {
     postSelectAll();
   }, []);
@@ -72,20 +78,51 @@ export const SearchArea = (props) => {
   };
   return (
     <div>
+      <h2>Your Arts List</h2>
       <SearchInput onChange={onChangeInput} value={val} />
+      <STable>
+        <thead><STr>
+          <th>Art Name</th>
+          <SThRuledLine>Tags</SThRuledLine>
+          <th>Uses</th>
+          </STr></thead>
+        <tbody>
       {myArts.map((myArt, index) => {
         console.log("aaa");
         return (
-          <SArtCard
-            name={myArt["name"]}
-            tags={myArt["tags"]}
-            uses={myArt["uses"]}
-            key={index}
-          />
+          // <SArtCard
+          //   name={myArt["name"]}
+          //   tags={myArt["tags"]}
+          //   uses={myArt["uses"]}
+          //   key={index}
+          // />
+          <ArtRow
+          name={myArt["name"]}
+          tags={myArt["tags"]}
+          uses={myArt["uses"]}
+          key={index}
+          onClick={()=>onClickNavMyArt(myArt["art_id"])}
+        />
         );
       })}
+      </tbody>
+      </STable>
     </div>
   );
 };
 
-const SArtCard = styled(ArtCard)`margin: 8px auto;background-color: red;color: red;`;
+const STable = styled.table`
+border-bottom: 1px solid #E9E9E9;
+border-collapse: collapse;
+`;
+
+
+const SThRuledLine = styled.th`
+  border-left: 1px solid #e9e9e9;
+  border-right: 1px solid #e9e9e9;
+`;
+
+const STr = styled.tr`
+  border-bottom: 1px solid #e9e9e9;
+`;
+// const SArtCard = styled(ArtCard)`margin: 8px auto;background-color: red;color: red;`;
