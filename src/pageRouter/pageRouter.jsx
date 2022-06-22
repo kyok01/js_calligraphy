@@ -44,7 +44,7 @@ export const PageRouter = () => {
           </NavLink>
         </li>
       </ul>
-    <Routes>
+    <Routes basename="/subfolder">
         <Route path="/" element={<Cols />} />
         <Route path="/about" element={<About />} />
         <Route path="/post" element={<Post />} />
