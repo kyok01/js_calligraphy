@@ -11,7 +11,7 @@ export const ColRight = (props) => {
         // height={height}
         width={width}
         height={height}
-        id="elem"
+        id="ifrm"
       />
     </SDivColRight>
   );
