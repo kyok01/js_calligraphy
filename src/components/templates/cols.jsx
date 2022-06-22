@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../store/userState";
+import { Header } from "../organisms/header";
 
 export const Cols = (props) => {
   const { artId, iniHtml, iniJs, iniCss } = props;
@@ -33,7 +34,9 @@ export const Cols = (props) => {
       iframeSource = `https://brownlynx2.sakura.ne.jp/phpApi_jsCal_test/data/folder${artId}/sample.html`;
     }
   }
-  const [source, setSource] = useState(location.pathname.match("/user/") ? "" : iframeSource);
+  const [source, setSource] = useState(
+    location.pathname.match("/user/") ? "" : iframeSource
+  );
   const width = "100%";
   const height = 500;
 
@@ -83,10 +86,10 @@ export const Cols = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
   const updateDB = () => {
-    console.log('updateDB');
+    console.log("updateDB");
     const postData = new FormData(); // フォーム方式で送る場合
     postData.set("artId", artId); // set()で格納する
     postData.set("html", html); // set()で格納する
@@ -113,7 +116,7 @@ export const Cols = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
   const onClickReflect = () => {
     setSource(iframeSource);
@@ -122,20 +125,23 @@ export const Cols = (props) => {
   console.log(iniHtml);
 
   return (
-    <SDivCols>
-      <ColLeft
-        iniHtml={iniHtml}
-        handleEditorChangeH={handleEditorChangeH}
-        iniJs={iniJs}
-        handleEditorChangeJ={handleEditorChangeJ}
-        iniCss={iniCss}
-        handleEditorChangeC={handleEditorChangeC}
-        onClickPost={onClickPost}
-        onClickUpdateDB={updateDB}
-        onClickReflect={onClickReflect}
-      />
-      <ColRight source={source} width={width} height={height} />
-    </SDivCols>
+    <>
+      <Header />
+      <SDivCols>
+        <ColLeft
+          iniHtml={iniHtml}
+          handleEditorChangeH={handleEditorChangeH}
+          iniJs={iniJs}
+          handleEditorChangeJ={handleEditorChangeJ}
+          iniCss={iniCss}
+          handleEditorChangeC={handleEditorChangeC}
+          onClickPost={onClickPost}
+          onClickUpdateDB={updateDB}
+          onClickReflect={onClickReflect}
+        />
+        <ColRight source={source} width={width} height={height} />
+      </SDivCols>
+    </>
   );
 };
 

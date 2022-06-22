@@ -9,10 +9,11 @@ import { Login } from "../components/pages/login";
 import { User } from "../components/pages/user";
 import { UserMypage } from "../components/pages/userMypage";
 import { UserMyArt } from "../components/pages/userMyArt";
+import { HeaderOnly } from "../components/templates/headerOnly";
 
 export const PageRouter = () => {
     return (<>
-    <ul>
+    {/* <ul>
         <li>
           <NavLink
             to="/"
@@ -43,11 +44,11 @@ export const PageRouter = () => {
             About
           </NavLink>
         </li>
-      </ul>
+      </ul> */}
     <Routes basename="/subfolder">
         <Route path="/" element={<Cols />} />
         <Route path="/about" element={<About />} />
-        <Route path="/post" element={<Post />} />
+        <Route path="/post" element={<HeaderOnly><Post /></HeaderOnly>} />
         <Route path="/arts" element={<Arts />} >
           <Route path=":artId" element={<Art />} />
         </Route>
