@@ -5,9 +5,9 @@ export const ArtCard = (props) => {
   const { name, tags, uses } = props;
   return (
     <SContainer>
-      <span>{name}</span>
-      <span>{tags}</span>
-      <span>{uses}</span>
+      <SSpan>name:{name}</SSpan>
+      <SSpan>tags:{tags}</SSpan>
+      <SSpan>uses:{uses}</SSpan>
       {/* {tags.map((tag) => {
         return <span>{tag},</span>;
       })}
@@ -20,4 +20,14 @@ export const ArtCard = (props) => {
 
 const SContainer = styled.div`
   outline: 1px solid black;
+  width: 800px;
+  height: 60px;
+  text-align: center;
+  border-radius: 9999px;
+  line-height: 60px;
+`;
+
+const SSpan = styled.span`
+margin-left:8px;
+
 `;
