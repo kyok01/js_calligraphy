@@ -1,7 +1,7 @@
 {
   "name": "js_calligraphy",
   "version": "0.1.0",
-  "homepage": "/cc-ver1/",
+  "homepage": "/cc-ver2/",
   "private": true,
   "dependencies": {
     "@monaco-editor/react": "^4.4.5",
